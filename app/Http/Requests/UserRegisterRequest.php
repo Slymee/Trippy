@@ -27,13 +27,13 @@ class UserRegisterRequest extends FormRequest
             'username' => ['required', 'string', MAX255, 'unique:users', 'bail'],
             'email' => ['required', 'string', 'email', MAX255, 'unique:users', 'bail'],
             'password' => ['required', 'string', 'min:12', 'confirmed', 'bail'],
-            'contact_number' => ['required', 'integer', MAX255, 'unique:users', 'bail'],
+            'contact' => ['required', 'integer', 'unique:users', 'bail'],
             'bio' => ['nullable', 'string', 'bail'],
 
             'street_name' => ['required', 'string', MAX255, 'bail'],
             'city_name' => ['required', 'string', MAX255, 'bail'],
             'state_province' => ['required', 'string', MAX255, 'bail'],
-            'postal_code' => ['required', 'integer', MAX255, 'bail'],
+            'postal_code' => ['required', 'integer', 'bail'],
             'country_name' => ['required', 'string', MAX255, 'bail'],
         ];
     }
@@ -68,7 +68,6 @@ class UserRegisterRequest extends FormRequest
 
             'contact.required' => 'Please enter your contact information.',
             'contact.integer' => 'Invalid contact format.',
-            'contact.max' => 'Contact number cannot be longer than 255 characters.',
             'contact.unique' => 'Contact number already in use.',
 
             'bio.string' => 'Bio must be a string.',
@@ -87,7 +86,6 @@ class UserRegisterRequest extends FormRequest
 
             'postal_code.required' => 'Please enter your postal code.',
             'postal_code.integer' => 'Postal code format invalid.',
-            'postal_code.max' => 'Postal code cannot be longer than 255 characters.',
 
             'country_name.required' => 'Please enter your country name.',
             'country_name.string' => 'Country name must be a string.',

@@ -1,42 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\API;
+    namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRegisterRequest;
-use App\Models\Address;
-use App\Models\User;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+    use App\Http\Controllers\Controller;
+    use App\Http\Requests\UserRegisterRequest;
+    use App\Repositories\Interfaces\UserRegistrationRepositoryInterface;
+    use Illuminate\Http\JsonResponse;
 
-class UserRegisterController extends Controller
-{
-    public function register(UserRegisterRequest $request): JsonResponse
+    class UserRegisterController extends Controller
     {
-        if ($request->fails()){
-            return apiResponse(null, 'Validation Failed', false, 400);
+        protected $userRegistrationRepository;
+        public function __construct(UserRegistrationRepositoryInterface $userRegistrationRepository)
+        {
+            $this->userRegistrationRepository = $userRegistrationRepository;
         }
+        public function register(UserRegisterRequest $request): JsonResponse
+        {
+            $user = $this->userRegistrationRepository->userCreate($request->validated());
 
-        $validatedData = $request->validated();
+            $address = $this->userRegistrationRepository->addressCreate($user->id, $request->validated());
 
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'username' => $validatedData['username'],
-            'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']),
-            'bio' => $validatedData['bio'],
-        ]);
+            $user->address()->save($address);
 
-        $address = Address::create([
-            'street_name' => $validatedData['street_name'],
-            'city_name' => $validatedData['city_name'],
-            'state_province' => $validatedData['state_province'],
-            'postal_code' => $validatedData['postal_code'],
-            'country_name' => $validatedData['country_name'],
-        ]);
-
-        $user->address()->save($address);
-
-        return apiResponse($user, 'User registered successfully', true, 201);
+            //return apiResponse($user->load('address'), 'User registered successfully', true, 201);
+            return \App\Helpers\apiResponse($user->load('address'), 'User registered successfully', true, 201);
+        }
     }
-}
