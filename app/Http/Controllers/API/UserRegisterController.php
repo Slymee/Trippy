@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegisterRequest;
 use App\Models\Address;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserRegisterController extends Controller
 {
-    public function register(UserRegisterRequest $request)
+    public function register(UserRegisterRequest $request): JsonResponse
     {
         if ($request->fails()){
             return apiResponse(null, 'Validation Failed', false, 400);
