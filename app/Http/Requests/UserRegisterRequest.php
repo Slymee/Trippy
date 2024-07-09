@@ -33,7 +33,7 @@ class UserRegisterRequest extends FormRequest
             'street_name' => ['required', 'string', MAX255, 'bail'],
             'city_name' => ['required', 'string', MAX255, 'bail'],
             'state_province' => ['required', 'string', MAX255, 'bail'],
-            'postal_code' => ['required', 'integer', 'bail'],
+            'postal_code' => ['required', 'integer','regex:/^\d{5,10}$/', 'bail'],
             'country_name' => ['required', 'string', MAX255, 'bail'],
         ];
     }
@@ -86,6 +86,7 @@ class UserRegisterRequest extends FormRequest
 
             'postal_code.required' => 'Please enter your postal code.',
             'postal_code.integer' => 'Postal code format invalid.',
+            'postal_code.regex' => 'Invalid postal code.',
 
             'country_name.required' => 'Please enter your country name.',
             'country_name.string' => 'Country name must be a string.',

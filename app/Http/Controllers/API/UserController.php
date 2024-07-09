@@ -7,7 +7,7 @@
     use App\Repositories\Interfaces\UserRegistrationRepositoryInterface;
     use Illuminate\Http\JsonResponse;
 
-    class UserRegisterController extends Controller
+    class UserController extends Controller
     {
         protected $userRegistrationRepository;
         public function __construct(UserRegistrationRepositoryInterface $userRegistrationRepository)
@@ -16,13 +16,16 @@
         }
         public function register(UserRegisterRequest $request): JsonResponse
         {
-            $user = $this->userRegistrationRepository->userCreate($request->validated());
+            try {
+                $user = $this->userRegistrationRepository->userCreate($request->validated());
 
-            $address = $this->userRegistrationRepository->addressCreate($user->id, $request->validated());
+                $address = $this->userRegistrationRepository->addressCreate($user->id, $request->validated());
 
-            $user->address()->save($address);
+                $user->address()->save($address);
 
-            //return apiResponse($user->load('address'), 'User registered successfully', true, 201);
-            return \App\Helpers\apiResponse($user->load('address'), 'User registered successfully', true, 201);
+                return \App\Helpers\apiResponse($user->load('address'), 'User registered successfully', true, 201);
+            }catch (\Exception $e){
+                return \App\Helpers\apiResponse(null, $e->getMessage(), false, 500);
+            }
         }
     }

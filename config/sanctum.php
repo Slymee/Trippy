@@ -46,8 +46,8 @@ return [
     |
     */
 
-    'expiration' => null,
-
+//    'expiration' => null,
+    'expiration' => \DateInterval::createFromDateString('1 hour'),
     /*
     |--------------------------------------------------------------------------
     | Token Prefix
