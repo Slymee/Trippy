@@ -4,9 +4,9 @@ namespace App\Repositories;
 
 use App\Models\Address;
 use App\Models\User;
-use App\Repositories\Interfaces\UserRegistrationRepositoryInterface;
+use App\Repositories\Interfaces\UserAuthenticationRepositoryInterface;
 
-class UserRegistrationRepository implements UserRegistrationRepositoryInterface
+class UserAuthenticationRepository implements UserAuthenticationRepositoryInterface
 {
     public function userCreate(array $data)
     {
