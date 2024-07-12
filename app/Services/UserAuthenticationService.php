@@ -14,6 +14,6 @@ class UserAuthenticationService
 
     public function getAccessToken($user)
     {
-        return $user->createToken('auth_token', ['expires_in' => 3600])->plainTextToken;
+        return $user->createToken('auth_token')->plainTextToken;
     }
 }
