@@ -11,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use function App\Helpers\apiResponse;
 
-class UserController extends Controller
+class UserAuthController extends Controller
 {
     protected $userAuthenticationRepository, $userAuthenticationService;
     public function __construct(UserAuthenticationRepositoryInterface $userAuthenticationRepository, UserAuthenticationService $userAuthenticationService)
