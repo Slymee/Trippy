@@ -29,11 +29,16 @@ class Trip extends Model
 
     public function arrivalTimePlace(): HasOne
     {
-        return $this->hasOne('trip_arrival_place_time', 'trip_id', 'id');
+        return $this->hasOne(TripArrivalPlaceTime::class, 'trip_id', 'id');
     }
 
     public function userParticipateTrip(): HasMany
     {
         return $this->hasMany('user_participate_trips', 'trip_id', 'id');
+    }
+
+    public function destinations()
+    {
+        return $this->hasMany(Destination::class);
     }
 }
