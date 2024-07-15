@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('feedback_title', 255);
             $table->text('feedback_description');
-            $table->integer('feedback_rating', 5);
+            $table->integer('feedback_rating');
             $table->timestamps();
         });
     }

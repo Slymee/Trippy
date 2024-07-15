@@ -37,7 +37,7 @@ class Trip extends Model
         return $this->hasMany('user_participate_trips', 'trip_id', 'id');
     }
 
-    public function destinations()
+    public function destinations(): HasMany
     {
         return $this->hasMany(Destination::class);
     }
