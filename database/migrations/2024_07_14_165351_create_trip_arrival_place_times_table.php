@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('trip_id')->constrained('trips')->onDelete('cascade');
             $table->time('arrival_time');
-            $table->time('arrival_time');
             $table->decimal('longitude', 10, 8);
             $table->decimal('latitude', 10, 8);
             $table->timestamps();
