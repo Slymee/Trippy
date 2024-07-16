@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('transport_name', 255);
             $table->string('transport_type', 255);
             $table->string('transport_number', 255);
-            $table->decimal('price', 10, 8);
+            $table->decimal('price_per_head', 10, 8);
             $table->timestamps();
         });
     }

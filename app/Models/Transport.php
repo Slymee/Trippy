@@ -16,7 +16,7 @@ class Transport extends Model
         'transport_name',
         'transport_type',
         'transport_number',
-        'price'
+        'price_per_head',
     ];
 
     public function itenerary()
