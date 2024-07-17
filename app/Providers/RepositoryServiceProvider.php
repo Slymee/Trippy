@@ -13,6 +13,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        //authentication repository
         $this->app->bind(UserAuthenticationRepositoryInterface::class, UserAuthenticationRepository::class);
     }
 
