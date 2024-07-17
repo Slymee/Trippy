@@ -9,6 +9,8 @@ use App\Repositories\Interfaces\UserAuthenticationRepositoryInterface;
 use App\Services\UserAuthenticationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 use function App\Helpers\apiResponse;
 
 class UserAuthController extends Controller
@@ -28,6 +30,8 @@ class UserAuthController extends Controller
 
             return apiResponse($user->load('address'), 'User registered successfully', true, 201);
         }catch (\Exception $e){
+            Log::error('Caught Exception: '. $e->getMessage());
+            Log::error('Exception Details: '. $e);
             return apiResponse(null, $e->getMessage(), false, 500);
         }
     }
@@ -52,6 +56,8 @@ class UserAuthController extends Controller
             ], 'Login successful', true, 200);
 
         }catch (\Exception $e){
+            Log::error('Caught Exception: '. $e->getMessage());
+            Log::error('Exception Details: '. $e);
             return apiResponse(null, $e->getMessage(), false, 500);
         }
     }
