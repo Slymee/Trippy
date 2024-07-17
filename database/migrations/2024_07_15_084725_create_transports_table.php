@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('itenerary_id')->constrained('iteneraries')->onDelete('cascade');
             $table->string('transport_name', 255);
             $table->string('transport_type', 255);
-            $table->string('transport_number', 255);
-            $table->decimal('price_per_head', 10, 8);
+            $table->string('transport_vehicle_number', 255)->nullable();
+            $table->decimal('price_per_person', 10, 8);
             $table->timestamps();
         });
     }

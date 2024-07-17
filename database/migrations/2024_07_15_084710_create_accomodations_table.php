@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('accomodations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('itenerary_id')->constrained('iteneraries');
-            $table->string('transport_name', 255);
-            $table->string('transport_type', 255);
-            $table->string('transport_contact', 255);
-            $table->decimal('price', 10, 8);
+            $table->string('accomodation_name', 255);
+            $table->string('accomodation_type', 255);
+            $table->string('accomodation_contact', 255);
+            $table->decimal('price_per_room', 10, 8);
             $table->timestamps();
         });
     }
