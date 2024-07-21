@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces\Destination;
 
-interface DestinationReadDeleteRepoInterface{
+interface DestinationReadDeleteRepositoryInterface{
 
     
     public function getAllDestination($tripId);

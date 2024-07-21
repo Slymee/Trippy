@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces\Trip;
 
-interface TripCreateUpdateRepoInterface{
+interface TripCreateUpdateRepositoryInterface{
     public function createTrip(array $data);
 
     public function updateTrip(array $data, $tripId);

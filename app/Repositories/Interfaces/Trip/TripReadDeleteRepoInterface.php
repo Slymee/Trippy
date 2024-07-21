@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces\Trip;
 
-interface TripReadDeleteRepoInterface{
+interface TripReadDeleteRepositoryInterface{
 
     public function getAllTrip();
 

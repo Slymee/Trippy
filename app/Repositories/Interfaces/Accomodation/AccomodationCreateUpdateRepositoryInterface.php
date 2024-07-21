@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces\Accomodation;
 
-interface AccomodationCreateUpdateRepository{
+interface AccomodationCreateUpdateRepositoryInterface{
 
     public function createAccomodation(array $data);
 

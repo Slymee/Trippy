@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces\Itenerary;
 
-interface IteneraryReadDeleteRepoInterface{
+interface IteneraryReadDeleteRepositoryInterface{
 
     public function getAllItenerary($destinationId);
 

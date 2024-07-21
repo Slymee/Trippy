@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces\Transport;
 
-interface TransportCreateUpdateRepoInterface{
+interface TransportCreateUpdateRepositoryInterface{
 
     public function createTransportation(array $data);
 

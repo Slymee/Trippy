@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces\Transport;
 
-interface TransportReadDeleteRepoInterface{
+interface TransportReadDeleteRepositoryInterface{
 
     public function getAllTransportation($iteneraryId);
 

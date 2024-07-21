@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces\Itenerary;
 
-interface IteneraryCreateUodateRepository{
+interface IteneraryCreateUpdateRepositoryInterface{
         
     public function createItenerary(array $data);
 
