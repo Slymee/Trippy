@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('iteneraries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('destination_id')->constrained('destinations');
+            $table->string('name', 255);
             $table->date('arrival_date');
             $table->date('departure_date');
             $table->timestamps();
