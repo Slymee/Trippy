@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Interfaces\Transport;
+namespace App\Repositories\Interfaces\Transportation;
 
-interface TransportReadDeleteRepositoryInterface{
+interface TransportationReadDeleteRepositoryInterface{
 
     public function getAllTransportation($iteneraryId);
 

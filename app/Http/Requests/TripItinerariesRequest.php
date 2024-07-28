@@ -52,15 +52,17 @@ class TripItinerariesRequest extends FormRequest
                 'before:trip.end_date',
             ],
 
-            'trip.destinations.*.itineraries.*.accommodations.*.accommodation_name' => ['required', 'string', MAX255],
-            'trip.destinations.*.itineraries.*.accommodations.*.accommodation_type' => ['required', 'string', MAX255],
-            'trip.destinations.*.itineraries.*.accommodations.*.accommodation_contact' => ['required', 'string', MAX255],
-            'trip.destinations.*.itineraries.*.accommodations.*.price_per_room' => ['required', 'numeric', DEC2TO10],
+            'trip.destinations.*.itineraries.*.accommodations' => ['sometimes','array'],
+            'trip.destinations.*.itineraries.*.accommodations.*.accommodation_name' => ['required_with:trip.destinations.*.itineraries.*.accommodations', 'string', MAX255],
+            'trip.destinations.*.itineraries.*.accommodations.*.accommodation_type' => ['required_with:trip.destinations.*.itineraries.*.accommodations', 'string', MAX255],
+            'trip.destinations.*.itineraries.*.accommodations.*.accommodation_contact' => ['required_with:trip.destinations.*.itineraries.*.accommodations', 'string', MAX255],
+            'trip.destinations.*.itineraries.*.accommodations.*.price_per_room' => ['required_with:trip.destinations.*.itineraries.*.accommodations', 'numeric', DEC2TO10],
 
-            'trip.destinations.*.itineraries.*.transportations.*.transportation_name' => ['required', 'string', MAX255],
-            'trip.destinations.*.itineraries.*.transportations.*.transportation_type' => ['required', 'string', MAX255],
-            'trip.destinations.*.itineraries.*.transportations.*.transportation_contact' => ['required', 'string', MAX255],
-            'trip.destinations.*.itineraries.*.transportations.*.price_per_person' => ['required', 'numeric', DEC2TO10],
+            'trip.destinations.*.itineraries.*.transportations' => ['sometimes','array'],
+            'trip.destinations.*.itineraries.*.transportations.*.transportation_name' => ['required_with:trip.destinations.*.itineraries.*.transportations', 'string', MAX255],
+            'trip.destinations.*.itineraries.*.transportations.*.transportation_type' => ['required_with:trip.destinations.*.itineraries.*.transportations', 'string', MAX255],
+            'trip.destinations.*.itineraries.*.transportations.*.transportation_contact' => ['required_with:trip.destinations.*.itineraries.*.transportations', 'string', MAX255],
+            'trip.destinations.*.itineraries.*.transportations.*.price_per_person' => ['required_with:trip.destinations.*.itineraries.*.transportations', 'numeric', DEC2TO10],
         ];
     }
 }

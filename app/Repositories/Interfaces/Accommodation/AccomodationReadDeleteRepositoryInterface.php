@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Interfaces\Accomodation;
+namespace App\Repositories\Interfaces\Accommodation;
 
 interface AccomodationReadDeleteRepositoryInterface{
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('accommodation_name', 255);
             $table->string('accommodation_type', 255);
             $table->string('accommodation_contact', 255);
-            $table->decimal('price_per_room', 10, 8);
+            $table->decimal('accommodation_price', 10, 8);
             $table->timestamps();
         });
     }
