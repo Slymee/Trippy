@@ -46,7 +46,7 @@ class TripItinerariesController extends Controller
             'registration_deadline' => $jsonData['trip']['registration_deadline'],
             'max_individuals' => $jsonData['trip']['max_individuals'],
         ];
-        $trip = $this->tripCreateUpdateRepo->createTrip($tripArray);
+        $trip = $this->tripCreateUpdateRepo->createOrUpdateTrip($tripArray);
 
         foreach ($jsonData['trip']['destinations'] as $destinationData){
             $destinationArray = [

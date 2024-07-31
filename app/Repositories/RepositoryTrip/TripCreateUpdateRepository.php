@@ -7,13 +7,8 @@ use App\Repositories\Interfaces\Trip\TripCreateUpdateRepositoryInterface;
 
 class TripCreateUpdateRepository implements TripCreateUpdateRepositoryInterface
 {
-    public function createTrip(array $data)
+    public function createOrUpdateTrip(array $data)
     {
-        return Trip::create($data);
-    }
-
-    public function updateTrip(array $data, $tripId)
-    {
-
+        return Trip::updateOrCreate(['id' => $data['id']], $data);
     }
 }
