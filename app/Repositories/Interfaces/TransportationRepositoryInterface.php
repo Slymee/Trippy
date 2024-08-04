@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces;
 
-interface TransportationRepositoruInterface
+interface TransportationRepositoryInterface
 {
     public function getAll();
 
