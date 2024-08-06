@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transport extends Model
+class Transportation extends Model
 {
     use HasFactory;
 
-    protected $table = 'transports';
+    protected $table = 'transportation';
 
     protected $fillable = [
-        'itenerary_id',
+        'itinerary_id',
         'transport_name',
         'transport_type',
         'transport_number',
         'price_per_head',
     ];
 
-    public function itenerary()
+    public function itinerary(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Itenerary::class);
+        return $this->belongsTo(Itinerary::class);
     }
 }

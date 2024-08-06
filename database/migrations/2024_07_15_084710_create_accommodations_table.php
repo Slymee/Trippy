@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('iteneraries', function (Blueprint $table) {
+        Schema::create('accommodations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('destination_id')->constrained('destinations');
-            $table->date('arrival_date');
-            $table->date('departure_date');
+            $table->foreignId('itinerary_id')->constrained('itineraries');
+            $table->string('accommodation_name', 255);
+            $table->string('accommodation_type', 255);
+            $table->string('accommodation_contact', 255);
+            $table->decimal('accommodation_price', 10, 8);
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('iteneraries');
+        Schema::dropIfExists('accommodations');
     }
 };

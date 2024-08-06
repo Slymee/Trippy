@@ -52,7 +52,7 @@ class UserAuthController extends Controller
             return apiResponse([
                 'access_token' => $accessToken,
                 'token_type' => 'Bearer',
-                'expires_in' => 3600,
+                'expires_in' => 3600 * 48,
             ], 'Login successful', true, 200);
 
         }catch (\Exception $e){

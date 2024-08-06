@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('name', 255);
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');

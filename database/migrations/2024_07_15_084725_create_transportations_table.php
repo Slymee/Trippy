@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transports', function (Blueprint $table) {
+        Schema::create('transportations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('itenerary_id')->constrained('iteneraries')->onDelete('cascade');
-            $table->string('transport_name', 255);
-            $table->string('transport_type', 255);
-            $table->string('transport_vehicle_number', 255)->nullable();
+            $table->foreignId('itinerary_id')->constrained('itineraries')->onDelete('cascade');
+            $table->string('transportation_name', 255);
+            $table->string('transportation_type', 255);
+            $table->string('transportation_vehicle_number', 255)->nullable();
             $table->decimal('price_per_person', 10, 8);
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transports');
+        Schema::dropIfExists('transportations');
     }
 };
