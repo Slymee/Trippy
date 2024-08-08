@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('arrival_place', 255);
-            $table->time('arrival_time');
+            $table->timestamp('arrival_date_time');
             $table->timestamps();
         });
     }
