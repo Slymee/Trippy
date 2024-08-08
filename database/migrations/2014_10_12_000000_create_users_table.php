@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('contact', 10)->unique();
             $table->text('bio')->nullable();
 //            $table->rememberToken();
+            $table->boolean('is_admin');
             $table->timestamps();
         });
     }

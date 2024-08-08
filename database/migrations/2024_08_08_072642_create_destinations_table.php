@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('destinations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('trip_id');
             $table->foreign('trip_id')->references('id')->on('trips')->onDelete('cascade');
             $table->string('destination_name', 255);
             $table->decimal('longitude', 10, 8);
