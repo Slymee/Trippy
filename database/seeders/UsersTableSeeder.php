@@ -22,7 +22,6 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234567',
                 'bio' => 'Just a simple ordinary bio.',
-                'is_admin' => 1,
             ],
             [
                 'name' => 'Ngix',
@@ -31,7 +30,6 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234561',
                 'bio' => 'Just a simple ordinary bio.',
-                'is_admin' => 0,
             ],
             [
                 'name' => 'Dell',
@@ -40,7 +38,6 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234560',
                 'bio' => 'Just a simple ordinary bio.',
-                'is_admin' => 0,
             ],
             [
                 'name' => 'Mac',
@@ -49,7 +46,6 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234562',
                 'bio' => 'Just a simple ordinary bio.',
-                'is_admin' => 0,
             ],
             [
                 'name' => 'Lenovo',
@@ -58,7 +54,6 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234563',
                 'bio' => 'Just a simple ordinary bio.',
-                'is_admin' => 0,
             ],
         ];
 
