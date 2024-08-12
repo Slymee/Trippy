@@ -48,7 +48,7 @@ return [
 
 //    'expiration' => null,
 //    'expiration' => \DateInterval::createFromDateString('1 hour'),
-    'expiration' => 3600 * 48,
+    'expiration' => 3600 * 72,
     /*
     |--------------------------------------------------------------------------
     | Token Prefix
