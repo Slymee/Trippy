@@ -26,7 +26,7 @@ class UserRegisterRequest extends FormRequest
             'name' => ['required', 'string', MAX255, 'bail'],
             'username' => ['required', 'string', MAX255, 'unique:users', 'bail'],
             'email' => ['required', 'string', 'email', MAX255, 'unique:users', 'bail'],
-            'password' => ['required', 'string', 'min:12', 'confirmed', 'bail'],
+            'password' => ['required', 'string', 'min:5', 'confirmed', 'bail'],
             'contact' => ['required', 'integer', 'unique:users', 'bail'],
             'address' => ['required', 'string', MAX255, 'bail'],
             'bio' => ['nullable', 'string', 'bail'],
