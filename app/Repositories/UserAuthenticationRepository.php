@@ -20,15 +20,15 @@ class UserAuthenticationRepository implements UserAuthenticationRepositoryInterf
         ]);
     }
 
-    public function addressCreate(int $userId, array $data)
-    {
-        return Address::create([
-            'user_id' => $userId,
-            'street_name' => $data['street_name'],
-            'city_name' => $data['city_name'],
-            'state_province' => $data['state_province'],
-            'postal_code' => $data['postal_code'],
-            'country_name' => $data['country_name'],
-        ]);
-    }
+    // public function addressCreate(int $userId, array $data)
+    // {
+    //     return Address::create([
+    //         'user_id' => $userId,
+    //         'street_name' => $data['street_name'],
+    //         'city_name' => $data['city_name'],
+    //         'state_province' => $data['state_province'],
+    //         'postal_code' => $data['postal_code'],
+    //         'country_name' => $data['country_name'],
+    //     ]);
+    // }
 }

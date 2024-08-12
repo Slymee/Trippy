@@ -30,11 +30,11 @@ class UserRegisterRequest extends FormRequest
             'contact' => ['required', 'integer', 'unique:users', 'bail'],
             'bio' => ['nullable', 'string', 'bail'],
 
-            'street_name' => ['required', 'string', MAX255, 'bail'],
-            'city_name' => ['required', 'string', MAX255, 'bail'],
-            'state_province' => ['required', 'string', MAX255, 'bail'],
-            'postal_code' => ['required', 'integer','regex:/^\d{5,10}$/', 'bail'],
-            'country_name' => ['required', 'string', MAX255, 'bail'],
+            // 'street_name' => ['required', 'string', MAX255, 'bail'],
+            // 'city_name' => ['required', 'string', MAX255, 'bail'],
+            // 'state_province' => ['required', 'string', MAX255, 'bail'],
+            // 'postal_code' => ['required', 'integer','regex:/^\d{5,10}$/', 'bail'],
+            // 'country_name' => ['required', 'string', MAX255, 'bail'],
         ];
     }
 
