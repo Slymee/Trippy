@@ -21,13 +21,17 @@ class UserController extends Controller
     public function index(string $userId)
     {
         try{
-            $userData = $this->userRepository->getUserData($userId);
+            if(auth()->id == $userId){
+                $userData = $this->userRepository->getUserData($userId);
 
-            return apiResponse($userData, 'User Found', true, 200);
+                return apiResponse($userData, 'User Found', true, 200);
+            }
+
+            return apiResponse(null, 'User not Found', false, 404);
         }catch (\Exception $e){
             Log::error('Caught Exception: '. $e->getMessage());
             Log::error('Exception Details: '. $e);
-            
+
             return apiResponse(null, $e->getMessage(), false, 500);
         }
     }
