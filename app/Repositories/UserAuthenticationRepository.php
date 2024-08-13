@@ -17,6 +17,7 @@ class UserAuthenticationRepository implements UserAuthenticationRepositoryInterf
             'password' => bcrypt($data['password']),
             'contact' => $data['contact'],
             'bio' => $data['bio'],
+            'address' => $data['address'],
         ]);
     }
 

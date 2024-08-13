@@ -28,6 +28,7 @@ class UserRegisterRequest extends FormRequest
             'email' => ['required', 'string', 'email', MAX255, 'unique:users', 'bail'],
             'password' => ['required', 'string', 'min:12', 'confirmed', 'bail'],
             'contact' => ['required', 'integer', 'unique:users', 'bail'],
+            'address' => ['required', 'string', MAX255, 'bail'],
             'bio' => ['nullable', 'string', 'bail'],
 
             // 'street_name' => ['required', 'string', MAX255, 'bail'],
@@ -69,6 +70,10 @@ class UserRegisterRequest extends FormRequest
             'contact.required' => 'Please enter your contact information.',
             'contact.integer' => 'Invalid contact format.',
             'contact.unique' => 'Contact number already in use.',
+
+            'address.required' => 'Please enter your address.',
+            'address.string' => 'Address must be a string.',
+            'address.max' => 'Address cannot be longer than 255 characters.',
 
             'bio.string' => 'Bio must be a string.',
 
