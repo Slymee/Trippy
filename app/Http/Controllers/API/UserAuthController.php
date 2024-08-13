@@ -53,6 +53,7 @@ class UserAuthController extends Controller
                 'access_token' => $accessToken,
                 'token_type' => 'Bearer',
                 'expires_in' => 3600 * 72,
+                'user_id' => $user->id,
             ], 'Login successful', true, 200);
 
         }catch (\Exception $e){
