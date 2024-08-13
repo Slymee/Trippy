@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234567',
                 'bio' => 'Just a simple ordinary bio.',
+                'address' => 'Indrachowk, Kathmandu, Nepal'
             ],
             [
                 'name' => 'Ngix',
@@ -30,6 +31,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234561',
                 'bio' => 'Just a simple ordinary bio.',
+                'address' => 'Baneshwore, Kathmandu, Nepal'
             ],
             [
                 'name' => 'Dell',
@@ -38,6 +40,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234560',
                 'bio' => 'Just a simple ordinary bio.',
+                'address' => 'Makkhan, Kathmandu, Nepal'
             ],
             [
                 'name' => 'Mac',
@@ -46,6 +49,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234562',
                 'bio' => 'Just a simple ordinary bio.',
+                'address' => 'Keyatahity, Kathmandu, Nepal'
             ],
             [
                 'name' => 'Lenovo',
@@ -54,6 +58,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'contact' => '9851234563',
                 'bio' => 'Just a simple ordinary bio.',
+                'address' => 'Ason, Kathmandu, Nepal'
             ],
         ];
 

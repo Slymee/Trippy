@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('contact', 10)->unique();
             $table->text('bio')->nullable();
+            $table->string('address', 255)->nullable();
 //            $table->rememberToken();
             $table->timestamps();
         });
