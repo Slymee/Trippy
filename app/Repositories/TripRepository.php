@@ -23,11 +23,14 @@ class TripRepository implements TripRepositoryInterface
     {
         $query = Trip::where('is_private', false);
 
+        if ($paginate === 'all') {
+            return $query->get();
+        }
+
         if (is_numeric($paginate) && (int)$paginate > 0) {
             return $query->paginate((int)$paginate);
         }
 
-        // Return all records if pagination is not specified or is invalid
-        return $query->get();
+        return $query->paginate(5);
     }
 }
