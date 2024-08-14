@@ -7,6 +7,7 @@ use App\Models\Trip;
 use App\Repositories\Interfaces\TripRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Spatie\FlareClient\Api;
 
 use function App\Helpers\apiResponse;
 
@@ -80,4 +81,37 @@ class TripController extends Controller
     {
         //
     }
+
+
+    public function searchTrips(Request $request)
+    {
+        $validated = $request->validate([
+            'search_term' => ['required','string', 'min:1', 'max:255'], // Adjust rules as needed
+        ]);
+    
+        // Retrieve the validated search term
+        $searchTerm = trim($validated['search_term']);
+    
+        // Perform search with pagination
+        $trips = Trip::where('trip_name', 'ILIKE', "%{$searchTerm}%")
+                     ->where('is_private', false)
+                     ->paginate(10);
+    
+        // Check if any trips are found
+        if ($trips->count() > 0) {
+            return apiResponse([
+                'trips' => $trips->items(),
+                'meta' => [
+                    'total' => $trips->total(),
+                    'per_page' => $trips->perPage(),
+                    'current_page' => $trips->currentPage(),
+                    'last_page' => $trips->lastPage(),
+                ],
+            ], 'Trips searched successfully', true, 200);
+        }
+    
+        // No trips found
+        return apiResponse(null, 'No similar results found.', false, 404);
+    }
+    
 }
