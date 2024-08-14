@@ -93,9 +93,7 @@ class TripController extends Controller
         $searchTerm = trim($validated['search_term']);
     
         // Perform search with pagination
-        $trips = Trip::where('trip_name', 'ILIKE', "%{$searchTerm}%")
-                     ->where('is_private', false)
-                     ->paginate(10);
+        $trips = $this->tripRepo->getSearchTrip($searchTerm);
     
         // Check if any trips are found
         if ($trips->count() > 0) {

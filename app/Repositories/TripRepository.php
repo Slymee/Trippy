@@ -11,4 +11,11 @@ class TripRepository implements TripRepositoryInterface
     {
         return Trip::where('user_id', $userId)->get();
     }
+
+    public function getSearchTrip($searchTerm)
+    {
+        return Trip::where('trip_name', 'ILIKE', "%{$searchTerm}%")
+                    ->where('is_private', false)
+                    ->paginate(10);
+    }
 }
