@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->string('arrival_place', 255);
             $table->timestamp('arrival_date_time');
+            $table->boolean('is_private')->default(0);
             $table->timestamps();
         });
     }
