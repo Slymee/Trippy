@@ -7,7 +7,7 @@ use App\Models\Trip;
 use App\Repositories\Interfaces\TripRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Spatie\FlareClient\Api;
+// use Spatie\FlareClient\Api;
 
 use function App\Helpers\apiResponse;
 
@@ -53,9 +53,19 @@ class TripController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Trip $trip)
+    public function show(?Trip $trip)
     {
-        //
+        try{
+            if($trip){
+                return apiResponse($trip, 'Trip instance found.', true, 200);
+            }
+    
+            return apiResponse(null, 'Invalid parameters.', false, 404);
+        }catch (\Exception $e){
+            Log::error('Caught Exception: '. $e->getMessage());
+            Log::error('Exception Details: '. $e);
+            return apiResponse(null, $e->getMessage(), false, 500);
+        }
     }
 
     /**
@@ -89,11 +99,10 @@ class TripController extends Controller
             'search_term' => ['required','string', 'min:1', 'max:255'], // Adjust rules as needed
         ]);
     
-        // Retrieve the validated search term
         $searchTerm = trim($validated['search_term']);
-    
-        // Perform search with pagination
-        $trips = $this->tripRepo->getSearchTrip($searchTerm);
+
+        try{
+            $trips = $this->tripRepo->getSearchTrip($searchTerm);
     
         // Check if any trips are found
         if ($trips->count() > 0) {
@@ -110,6 +119,11 @@ class TripController extends Controller
     
         // No trips found
         return apiResponse(null, 'No similar results found.', false, 404);
+        }catch (\Exception $e){
+            Log::error('Caught Exception: '. $e->getMessage());
+            Log::error('Exception Details: '. $e);
+            return apiResponse(null, $e->getMessage(), false, 500);
+        }
     }
     
 }
