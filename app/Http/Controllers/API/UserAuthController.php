@@ -16,11 +16,14 @@ use function App\Helpers\apiResponse;
 class UserAuthController extends Controller
 {
     protected $userAuthenticationRepository, $userAuthenticationService;
-    public function __construct(UserAuthenticationRepositoryInterface $userAuthenticationRepository, UserAuthenticationService $userAuthenticationService)
+    
+    public function __construct(UserAuthenticationRepositoryInterface $userAuthenticationRepository, 
+                                UserAuthenticationService $userAuthenticationService)
     {
         $this->userAuthenticationRepository = $userAuthenticationRepository;
         $this->userAuthenticationService = $userAuthenticationService;
     }
+
     public function register(UserRegisterRequest $request): JsonResponse
     {
         try {
