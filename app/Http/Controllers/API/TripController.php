@@ -7,6 +7,8 @@ use App\Models\Trip;
 use App\Repositories\Interfaces\TripRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Spatie\FlareClient\Api;
+
 // use Spatie\FlareClient\Api;
 
 use function App\Helpers\apiResponse;
@@ -59,7 +61,7 @@ class TripController extends Controller
             if($trip){
                 return apiResponse($trip, 'Trip instance found.', true, 200);
             }
-    
+
             return apiResponse(null, 'Invalid parameters.', false, 404);
         }catch (\Exception $e){
             Log::error('Caught Exception: '. $e->getMessage());
@@ -98,12 +100,12 @@ class TripController extends Controller
         $validated = $request->validate([
             'search_term' => ['required','string', 'min:1', 'max:255'], // Adjust rules as needed
         ]);
-    
+
         $searchTerm = trim($validated['search_term']);
 
         try{
             $trips = $this->tripRepo->getSearchTrip($searchTerm);
-    
+
         // Check if any trips are found
         if ($trips->count() > 0) {
             return apiResponse([
@@ -116,7 +118,7 @@ class TripController extends Controller
                 ],
             ], 'Trips searched successfully', true, 200);
         }
-    
+
         // No trips found
         return apiResponse(null, 'No similar results found.', false, 404);
         }catch (\Exception $e){
@@ -125,5 +127,31 @@ class TripController extends Controller
             return apiResponse(null, $e->getMessage(), false, 500);
         }
     }
-    
+
+    public function upcomingTrips($paginate = null)
+    {
+        try{
+            $upcomingTrips = $this->tripRepo->upcomingTrips($paginate);
+
+            $response = [
+                'trips' => $upcomingTrips instanceof \Illuminate\Database\Eloquent\Collection ? $upcomingTrips : $upcomingTrips->items(),
+            ];
+
+            if ($upcomingTrips instanceof \Illuminate\Pagination\LengthAwarePaginator) {
+                $response['meta'] = [
+                    'total' => $upcomingTrips->total(),
+                    'per_page' => $upcomingTrips->perPage(),
+                    'current_page' => $upcomingTrips->currentPage(),
+                    'last_page' => $upcomingTrips->lastPage(),
+                ];
+            }
+
+            return apiResponse($response, 'Upcoming Trips Found.', true, 200);
+        }catch (\Exception $e){
+            Log::error('Caught Exception: '. $e->getMessage());
+            Log::error('Exception Details: '. $e);
+            return apiResponse(null, $e->getMessage(), false, 500);
+        }
+    }
+
 }

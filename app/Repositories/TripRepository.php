@@ -18,4 +18,16 @@ class TripRepository implements TripRepositoryInterface
                     ->where('is_private', false)
                     ->paginate(10);
     }
+
+    public function upcomingTrips($paginate)
+    {
+        $query = Trip::where('is_private', false);
+
+        if (is_numeric($paginate) && (int)$paginate > 0) {
+            return $query->paginate((int)$paginate);
+        }
+
+        // Return all records if pagination is not specified or is invalid
+        return $query->get();
+    }
 }

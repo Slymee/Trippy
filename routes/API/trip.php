@@ -7,4 +7,6 @@ Route::middleware('auth:sanctum')->prefix('trip')->name('trip.')->group(function
     Route::get('/{userId}', [TripController::class, 'index'])->name('index');
 
     Route::post('/search', [TripController::class, 'searchTrips'])->name('search');
+
+    Route::get('/upcoming-trips/{paginate?}', [TripController::class, 'upcomingTrips'])->name('upcoming.trips');
 });
