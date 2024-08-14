@@ -3,6 +3,9 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -26,5 +29,45 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Throwable $exception
+     * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     */
+    public function render($request, Throwable $exception)
+    {
+        // Check if the request is an API request
+        if ($request->is('api/*')) {
+            // Handle validation exceptions
+            if ($exception instanceof ValidationException) {
+                return response()->json([
+                    'message' => 'The given data was invalid.',
+                    'errors' => $exception->errors()
+                ], 422);
+            }
+
+            // Handle HTTP exceptions (e.g., 404 Not Found, 403 Forbidden)
+            if ($exception instanceof HttpException) {
+                $statusCode = $exception->getStatusCode();
+                $message = $exception->getMessage() ?: 'An error occurred.';
+
+                return response()->json([
+                    'message' => $message,
+                ], $statusCode);
+            }
+
+            // Handle general exceptions
+            return response()->json([
+                'message' => 'An internal server error occurred.',
+                'error' => $exception->getMessage()
+            ], $exception instanceof HttpException ? $exception->getStatusCode() : 500);
+        }
+
+        // For non-API requests, use the default handling
+        return parent::render($request, $exception);
     }
 }
