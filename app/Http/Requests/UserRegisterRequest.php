@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 const MAX255 = 'max:255';
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserRegisterRequest extends FormRequest
 {
@@ -24,11 +25,27 @@ class UserRegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', MAX255, 'bail'],
-            'username' => ['required', 'string', MAX255, 'unique:users', 'bail'],
-            'email' => ['required', 'string', 'email', MAX255, 'unique:users', 'bail'],
+
+            'username' => [
+                'required', 'string', MAX255,
+                Rule::unique('users')->ignore(auth()->user()->id),
+                'bail'
+            ],
+
+            'email' => ['required', 'string', 'email', MAX255,
+                Rule::unique('users')->ignore(auth()->user()->id),
+                'bail'
+            ],
+
             'password' => ['required', 'string', 'min:5', 'confirmed', 'bail'],
-            'contact' => ['required', 'integer', 'unique:users', 'bail'],
+
+            'contact' => ['required', 'integer',
+            Rule::unique('users')->ignore(auth()->user()->id),
+                'bail'
+            ],
+
             'address' => ['required', 'string', MAX255, 'bail'],
+
             'bio' => ['nullable', 'string', 'bail'],
 
             // 'street_name' => ['required', 'string', MAX255, 'bail'],
