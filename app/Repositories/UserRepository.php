@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use Exception;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -12,5 +13,12 @@ class UserRepository implements UserRepositoryInterface
         return User::where('id', $userId)
                     ->select(['id', 'name', 'username', 'email', 'contact', 'bio', 'address'])
                     ->get();
+    }
+
+    public function updateUserData(string $userId, array $data)
+    {
+        $user = User::find($userId);
+
+        return $user->update($data);
     }
 }

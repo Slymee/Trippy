@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRegisterRequest;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use Illuminate\Support\Facades\Log;
 
@@ -27,6 +28,24 @@ class UserController extends Controller
             }
 
             return apiResponse(null, 'User not Found', false, 404);
+        }catch (\Exception $e){
+            Log::error('Caught Exception: '. $e->getMessage());
+            Log::error('Exception Details: '. $e);
+
+            return apiResponse(null, $e->getMessage(), false, 500);
+        }
+    }
+
+    public function update(UserRegisterRequest $request, $userId)
+    {
+        try{
+            if(!$this->userRepository->getUserData($userId)){
+                return apiResponse(null, 'User not Found.', false, 404);
+            }
+
+            $userData = $this->userRepository->updateUserData($userId, $request->validated());
+
+            return apiResponse($userData, 'Successfully Updated.', true, 200);
         }catch (\Exception $e){
             Log::error('Caught Exception: '. $e->getMessage());
             Log::error('Exception Details: '. $e);
