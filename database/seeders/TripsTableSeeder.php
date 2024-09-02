@@ -27,6 +27,7 @@ class TripsTableSeeder extends Seeder
                     'end_date' => now()->addDays(rand(8,11)),
                     'arrival_place' => $faker->streetAddress .', '. $faker->city,
                     'arrival_date_time' => now()->addDays(5)->format('Y-m-d H:i:s'),
+                    'trip_price' => rand(300, 5000),
                 ]
             );
         }
