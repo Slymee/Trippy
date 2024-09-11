@@ -19,10 +19,12 @@ return new class extends Migration
             $table->text('trip_description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('arrival_place', 255);
-            $table->timestamp('arrival_date_time');
-            $table->boolean('is_private')->default(0);
+            $table->time('arrival_time');
             $table->decimal('trip_price', 10, 2);
+            $table->string('start_loc', 255);
+            $table->string('final_loc', 255);
+            $table->string('means_of_transport', 255);
+            $table->boolean('is_private')->default(0);
             $table->timestamps();
         });
     }

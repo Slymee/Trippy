@@ -22,7 +22,21 @@ class TripRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'trip_name' => ['required', 'string', 'max:255'],
+            'trip_description' => ['required', 'string', 'max:255'],
+            'start_date' => ['required', 'date_format:Y-m-d'],
+            'end_date' => ['required', 'date_format:Y-m-d'],
+            'arrival_time' => ['required', 'date_format:g:i A',],
+            'means_of_transport' => ['required', 'string', 'max:255'],
+            'is_private' => ['sometimes', 'boolean'],
+
+            'start_loc' => ['required', 'string', 'max:255'],
+            'start_loc_name' => ['required', 'string', 'max:255'],
+            'final_loc' => ['required', 'string', 'max:255'],
+            'final_loc_name' => ['required', 'string', 'max:255'],
+
+            'location' => ['sometimes', 'array'],
+            'location.*' => ['sometimes', 'string', 'max:255'],
         ];
     }
 }

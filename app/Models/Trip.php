@@ -17,12 +17,23 @@ class Trip extends Model
         'trip_description',
         'start_date',
         'end_date',
-        'arrival_place',
-        'arrival_date_time',
+        'arrival_time',
+        'means_of_transport',
+        
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tripLocation()
+    {
+        return $this->hasOne(TripLocation::class);
+    }
+
+    public function stopOvers()
+    {
+        return $this->hasMany(StopOver::class);
     }
 }

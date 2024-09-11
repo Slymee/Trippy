@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('destinations', function (Blueprint $table) {
+        Schema::create('stop_overs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('trip_id');
-            $table->foreign('trip_id')->references('id')->on('trips')->onDelete('cascade');
-            $table->string('destination_name', 255);
-            $table->decimal('longitude', 10, 8);
-            $table->decimal('latitude', 10, 8);
+            $table->foreignId('trip_id') 
+                  ->constrained('trips')
+                  ->onDelete('cascade');
+            $table->string('location', 255);
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('destinations');
+        Schema::dropIfExists('stop_overs');
     }
 };

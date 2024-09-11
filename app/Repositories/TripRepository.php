@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Models\StopOver;
 use App\Models\Trip;
+use App\Models\TripLocation;
 use App\Repositories\Interfaces\TripRepositoryInterface;
 
 class TripRepository implements TripRepositoryInterface
@@ -32,5 +34,39 @@ class TripRepository implements TripRepositoryInterface
         }
 
         return $query->paginate(5);
+    }
+
+    public function createTrip(array $data)
+    {
+        dd($data);
+        $trip = Trip::create([
+            'user_id' => auth()->id(),
+            'trip_name' => $data['trip_name'],
+            'trip_description' => $data['trip_description'],
+            'start_date' => $data['start_date'],
+            'end_date' => $data['end_date'],
+            'arrival_time' => $data['arrival_time'],
+            'means_of_transport' => $data['means_of_transport'],
+            'is_private' => $data['is_private'],
+        ]);
+
+        TripLocation::create([
+            'trip_id' => $trip->id,
+            'start_loc' => $data['start_loc'],
+            'start_loc_name' => $data['start_loc_name'],
+            'final_loc' => $data['final_loc'],
+            'final_loc_name' => $data['final_loc_name'],
+        ]);
+
+        if($data['location']){
+            foreach ($data['location'] as $location){
+                StopOver::create([
+                    'trip_id' => $trip->id,
+                    'location' => $location,
+                ]);
+            }
+        }
+
+        return $trip->load('tripLocation', 'stopOvers');
     }
 }

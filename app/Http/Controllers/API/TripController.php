@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TripRequest;
 use App\Models\Trip;
 use App\Repositories\Interfaces\TripRepositoryInterface;
 use Illuminate\Http\Request;
@@ -47,9 +48,16 @@ class TripController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TripRequest $request)
     {
-        //
+        try{
+            $tripData = $this->tripRepo->createTrip($request->validated());
+            return apiResponse($tripData, 'Trip Create Successfully.', true, 200);
+        }catch (\Exception $e){
+            Log::error('Caught Exception: '. $e->getMessage());
+            Log::error('Exception Details: '. $e);
+            return apiResponse(null, $e->getMessage(), false, 500);
+        }
     }
 
     /**

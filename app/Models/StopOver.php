@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Destination extends Model
+class StopOver extends Model
 {
     use HasFactory;
 
-    protected $table = 'destinations';
+    protected $table = 'stop_overs';
 
     protected $fillable = [
         'trip_id',
-        'destination_name',
-        'longitude',
-        'latitude',
+        'location',
     ];
+
+    public function trip()
+    {
+        return $this->belongsTo(Trip::class);
+    }
 }

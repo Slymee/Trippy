@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Destination;
+use App\Models\TerminalDestination;
 use Illuminate\Http\Request;
 
-class DestinationController extends Controller
+class TerminalDestinationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +34,7 @@ class DestinationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Destination $destination)
+    public function show(TerminalDestination $terminalDestination)
     {
         //
     }
@@ -43,7 +42,7 @@ class DestinationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Destination $destination)
+    public function edit(TerminalDestination $terminalDestination)
     {
         //
     }
@@ -51,7 +50,7 @@ class DestinationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Destination $destination)
+    public function update(Request $request, TerminalDestination $terminalDestination)
     {
         //
     }
@@ -59,7 +58,7 @@ class DestinationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Destination $destination)
+    public function destroy(TerminalDestination $terminalDestination)
     {
         //
     }

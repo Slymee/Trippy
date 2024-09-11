@@ -9,4 +9,6 @@ interface TripRepositoryInterface
     public function getSearchTrip($searchTerm);
 
     public function upcomingTrips($paginate);
+
+    public function createTrip(array $data);
 }
