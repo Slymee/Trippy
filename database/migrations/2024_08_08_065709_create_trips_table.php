@@ -21,8 +21,6 @@ return new class extends Migration
             $table->date('end_date');
             $table->time('arrival_time');
             $table->decimal('trip_price', 10, 2);
-            $table->string('start_loc', 255);
-            $table->string('final_loc', 255);
             $table->string('means_of_transport', 255);
             $table->boolean('is_private')->default(0);
             $table->timestamps();

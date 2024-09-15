@@ -38,11 +38,11 @@ class TripRepository implements TripRepositoryInterface
 
     public function createTrip(array $data)
     {
-        dd($data);
         $trip = Trip::create([
             'user_id' => auth()->id(),
             'trip_name' => $data['trip_name'],
             'trip_description' => $data['trip_description'],
+            'trip_price' => $data['trip_price'],
             'start_date' => $data['start_date'],
             'end_date' => $data['end_date'],
             'arrival_time' => $data['arrival_time'],
@@ -54,12 +54,12 @@ class TripRepository implements TripRepositoryInterface
             'trip_id' => $trip->id,
             'start_loc' => $data['start_loc'],
             'start_loc_name' => $data['start_loc_name'],
-            'final_loc' => $data['final_loc'],
-            'final_loc_name' => $data['final_loc_name'],
+            'end_loc' => $data['end_loc'],
+            'end_loc_name' => $data['end_loc_name'],
         ]);
 
-        if($data['location']){
-            foreach ($data['location'] as $location){
+        if (isset($data['location']) && is_array($data['location'])) {
+            foreach ($data['location'] as $location) {
                 StopOver::create([
                     'trip_id' => $trip->id,
                     'location' => $location,

@@ -27,8 +27,6 @@ class TripsTableSeeder extends Seeder
                     'end_date' => now()->addDays(rand(8,11)),
                     'arrival_time' => $faker->dateTimeBetween('now', '+1 hour')->format('g:i A'),
                     'trip_price' => rand(300, 5000),
-                    'start_loc' => '27.717245, 85.323959',
-                    'final_loc' => '27.717245, 85.323959',
                     'means_of_transport' => 'Car',
                 ]
             );

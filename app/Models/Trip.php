@@ -15,6 +15,7 @@ class Trip extends Model
         'user_id',
         'trip_name',
         'trip_description',
+        'trip_price',
         'start_date',
         'end_date',
         'arrival_time',
