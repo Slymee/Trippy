@@ -66,7 +66,7 @@ class TripController extends Controller
     public function show(string $tripId)
     {
         try{
-            if($trip = $this->tripRepo->getTripDetails($tripId)){
+            if($trip = $this->tripRepo->getTripDetails($tripId)){;
                 return apiResponse($trip, 'Instance Found.', true, 200);
             }
 

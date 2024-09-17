@@ -38,7 +38,7 @@ class TripRepository implements TripRepositoryInterface
 
     public function getTripDetails($tripId)
     {
-        return Trip::find($tripId);
+        return Trip::with('users')->find($tripId);
     }
 
     public function createTrip(array $data)

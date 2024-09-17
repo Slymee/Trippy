@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Trip::class);
     }
+
+    public function enrollments()
+    {
+        return $this->hasMany(TripEnrollment::class, 'user_id');
+    }
 }

@@ -37,4 +37,16 @@ class Trip extends Model
     {
         return $this->hasMany(StopOver::class);
     }
+
+    // Define the relationship to TripEnrollment
+    public function enrollments()
+    {
+        return $this->hasMany(TripEnrollment::class, 'trip_id');
+    }
+
+    // Define the relationship to User through TripEnrollment
+    public function users()
+    {
+        return $this->hasManyThrough(User::class, TripEnrollment::class, 'trip_id', 'id', 'id', 'user_id');
+    }
 }
