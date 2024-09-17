@@ -10,5 +10,7 @@ interface TripRepositoryInterface
 
     public function upcomingTrips($paginate);
 
+    public function getTripDetails($tripId);
+
     public function createTrip(array $data);
 }

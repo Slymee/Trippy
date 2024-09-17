@@ -63,14 +63,14 @@ class TripController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(?Trip $trip)
+    public function show(string $tripId)
     {
         try{
-            if($trip){
-                return apiResponse($trip, 'Trip instance found.', true, 200);
+            if($trip = $this->tripRepo->getTripDetails($tripId)){
+                return apiResponse($trip, 'Instance Found.', true, 200);
             }
 
-            return apiResponse(null, 'Invalid parameters.', false, 404);
+            return apiResponse(null, 'Trip Instance not found.', false, 500);
         }catch (\Exception $e){
             Log::error('Caught Exception: '. $e->getMessage());
             Log::error('Exception Details: '. $e);

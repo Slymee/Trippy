@@ -11,4 +11,8 @@ Route::middleware('auth:sanctum')->prefix('trip')->name('trip.')->group(function
     Route::get('/upcoming-trips/{paginate?}', [TripController::class, 'upcomingTrips'])->name('upcoming.trips');
 
     Route::post('/create-trip', [TripController::class, 'store'])->name('create.trip');
+
+    Route::get('/details/{tripId}', [TripController::class, 'show'])->name('details');
+
+    Route::post('/trip-eroll', [TripController::class, 'tripEnrollment'])->name('trip.enrollment');
 });

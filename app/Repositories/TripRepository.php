@@ -36,6 +36,11 @@ class TripRepository implements TripRepositoryInterface
         return $query->paginate(5);
     }
 
+    public function getTripDetails($tripId)
+    {
+        return Trip::find($tripId);
+    }
+
     public function createTrip(array $data)
     {
         $trip = Trip::create([
