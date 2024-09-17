@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use DateTime;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TripRequest extends FormRequest
@@ -27,15 +28,24 @@ class TripRequest extends FormRequest
             'trip_price' => ['required', 'numeric'],
             'start_date' => ['required', 'date_format:Y-m-d'],
             'end_date' => ['required', 'date_format:Y-m-d'],
-            'arrival_time' => ['required', 'date_format:g:i A',],
+            'arrival_time' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    $format = 'g:i A';
+                    $d = DateTime::createFromFormat($format, $value);
+                    if (!$d || $d->format($format) !== $value) {
+                        $fail('The arrival time field must match the format g:i A.');
+                    }
+                },
+            ],
             'means_of_transport' => ['required', 'string', 'max:255'],
             'is_private' => ['sometimes', 'boolean'],
-
+        
             'start_loc' => ['required', 'string', 'max:255'],
             'start_loc_name' => ['required', 'string', 'max:255'],
             'end_loc' => ['required', 'string', 'max:255'],
             'end_loc_name' => ['required', 'string', 'max:255'],
-
+        
             'location' => ['sometimes', 'array'],
             'location.*' => ['sometimes', 'string', 'max:255'],
         ];
