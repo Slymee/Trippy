@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Trip extends Model
 {
@@ -48,5 +49,15 @@ class Trip extends Model
     public function users()
     {
         return $this->hasManyThrough(User::class, TripEnrollment::class, 'trip_id', 'id', 'id', 'user_id');
+    }
+
+    // Method to check if the currently authenticated user is enrolled
+    public function isUserEnrolled()
+    {
+        // Get the currently authenticated user
+        $user = Auth::user();
+    
+        // Check if the user is enrolled in this trip
+        return $user ? $this->users()->where('users.id', $user->id)->exists() : false;
     }
 }

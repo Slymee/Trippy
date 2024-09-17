@@ -67,7 +67,11 @@ class TripController extends Controller
     {
         try{
             if($trip = $this->tripRepo->getTripDetails($tripId)){;
-                return apiResponse($trip, 'Instance Found.', true, 200);
+                $response = [
+                    'trip' => $trip,
+                    'isEnrolled' => $trip->isUserEnrolled(),
+                ];
+                return apiResponse($response, 'Instance Found.', true, 200);
             }
 
             return apiResponse(null, 'Trip Instance not found.', false, 500);
