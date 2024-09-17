@@ -25,34 +25,28 @@ class UserRegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', MAX255, 'bail'],
-
+        
             'username' => [
                 'required', 'string', MAX255,
-                Rule::unique('users')->ignore(auth()->user()->id),
+                Rule::unique('users'),
                 'bail'
             ],
-
+        
             'email' => ['required', 'string', 'email', MAX255,
-                Rule::unique('users')->ignore(auth()->user()->id),
+                Rule::unique('users'),
                 'bail'
             ],
-
+        
             'password' => ['required', 'string', 'min:5', 'confirmed', 'bail'],
-
+        
             'contact' => ['required', 'integer',
-            Rule::unique('users')->ignore(auth()->user()->id),
+                Rule::unique('users'),
                 'bail'
             ],
-
+        
             'address' => ['required', 'string', MAX255, 'bail'],
-
+        
             'bio' => ['nullable', 'string', 'bail'],
-
-            // 'street_name' => ['required', 'string', MAX255, 'bail'],
-            // 'city_name' => ['required', 'string', MAX255, 'bail'],
-            // 'state_province' => ['required', 'string', MAX255, 'bail'],
-            // 'postal_code' => ['required', 'integer','regex:/^\d{5,10}$/', 'bail'],
-            // 'country_name' => ['required', 'string', MAX255, 'bail'],
         ];
     }
 

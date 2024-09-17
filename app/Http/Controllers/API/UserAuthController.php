@@ -31,7 +31,7 @@ class UserAuthController extends Controller
 
             // $this->userAuthenticationRepository->addressCreate($user->id, $request->validated());
 
-            return apiResponse($user->load('address'), 'User registered successfully', true, 201);
+            return apiResponse($user, 'User registered successfully', true, 201);
         }catch (\Exception $e){
             Log::error('Caught Exception: '. $e->getMessage());
             Log::error('Exception Details: '. $e);
