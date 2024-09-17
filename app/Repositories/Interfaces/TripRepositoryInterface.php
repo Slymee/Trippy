@@ -13,4 +13,8 @@ interface TripRepositoryInterface
     public function getTripDetails($tripId);
 
     public function createTrip(array $data);
+    
+    public function enrollUserInTrip($userId, $tripId);
+
+    public function leaveUserInTrip($userId, $tripId);
 }

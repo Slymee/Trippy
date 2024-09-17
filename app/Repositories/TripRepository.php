@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\StopOver;
 use App\Models\Trip;
+use App\Models\TripEnrollment;
 use App\Models\TripLocation;
 use App\Repositories\Interfaces\TripRepositoryInterface;
 
@@ -73,5 +74,19 @@ class TripRepository implements TripRepositoryInterface
         }
 
         return $trip->load('tripLocation', 'stopOvers');
+    }
+
+    public function enrollUserInTrip($userId, $tripId)
+    {
+
+        return TripEnrollment::create([
+            'user_id' => $userId,
+            'trip_id' => $tripId,
+        ]);
+    }
+
+    public function leaveUserInTrip($userId, $tripId)
+    {
+        return Trip::find($tripId)->users()->detatch($userId);
     }
 }

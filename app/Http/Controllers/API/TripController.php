@@ -9,6 +9,7 @@ use App\Repositories\Interfaces\TripRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Spatie\FlareClient\Api;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 // use Spatie\FlareClient\Api;
 
@@ -74,7 +75,7 @@ class TripController extends Controller
                 return apiResponse($response, 'Instance Found.', true, 200);
             }
 
-            return apiResponse(null, 'Trip Instance not found.', false, 500);
+            return apiResponse(null, 'Trip Instance not found.', false, 404);
         }catch (\Exception $e){
             Log::error('Caught Exception: '. $e->getMessage());
             Log::error('Exception Details: '. $e);
@@ -166,4 +167,42 @@ class TripController extends Controller
         }
     }
 
+    public function enrollUserInTrip($tripId, Request $request)
+    {
+        $validatedData = $request->validate([
+            'user_id' => 'required|exists:users,id', // Validate that user_id exists in users table
+        ]);
+
+        try{
+            if($tripEnroll = $this->tripRepo->enrollUserInTrip($validatedData['user_id'], $tripId)            ){            
+
+                return apiResponse($tripEnroll, 'Left the trip.', true, 200);
+            }
+
+            return apiResponse(null, 'Not Enrolled', false, 404);
+        }catch (\Exception $e){
+            Log::error('Caught Exception: '. $e->getMessage());
+            Log::error('Exception Details: '. $e);
+            return apiResponse(null, $e->getMessage(), false, 500);
+        }
+    }
+
+    public function leaveUserInTrip($tripId, Request $request)
+    {
+        $validatedData = $request->validate([
+            'user_id' => 'required|exists:users,id', // Validate that user_id exists in users table
+        ]);
+
+        try{
+            if($tripLeave = $this->tripRepo->leaveUserInTrip($validatedData['user_id'], $tripId)){
+                return apiResponse($tripLeave, 'Removed from Trip,', true, 200);
+            }
+
+            return apiResponse(null, 'Instance not found.', false, 404);
+        }catch (\Exception $e){
+            Log::error('Caught Exception: '. $e->getMessage());
+            Log::error('Exception Details: '. $e);
+            return apiResponse(null, $e->getMessage(), false, 500);
+        }
+    }
 }
