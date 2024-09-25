@@ -25,6 +25,7 @@ class TripRequest extends FormRequest
         return [
             'trip_name' => ['required', 'string', 'max:255'],
             'trip_description' => ['required', 'string', 'max:255'],
+            'trip_type' => ['required', 'string', 'max:255'],
             'trip_price' => ['required', 'numeric'],
             'start_date' => ['required', 'date_format:Y-m-d'],
             'end_date' => ['required', 'date_format:Y-m-d'],
