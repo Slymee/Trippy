@@ -25,7 +25,7 @@ class TripsTableSeeder extends Seeder
                     'trip_description' => $faker->sentence,
                     'start_date' => now()->addDays(5),
                     'end_date' => now()->addDays(rand(8,11)),
-                    'arrival_time' => $faker->dateTimeBetween('now', '+1 hour')->format('g:i A'),
+                    'arrival_time' => (string) $faker->dateTimeBetween('now', '+1 hour')->format('g:i A'),
                     'trip_price' => rand(300, 5000),
                     'means_of_transport' => 'Car',
                 ]

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('trip_description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->time('arrival_time');
+            $table->string('arrival_time');
             $table->decimal('trip_price', 10, 2);
             $table->string('means_of_transport', 255);
             $table->boolean('is_private')->default(0);
