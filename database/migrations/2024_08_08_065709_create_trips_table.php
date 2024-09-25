@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('trip_type',255);
             $table->string('trip_name', 255);
             $table->text('trip_description');
             $table->date('start_date');
