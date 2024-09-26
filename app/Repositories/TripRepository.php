@@ -48,6 +48,7 @@ class TripRepository implements TripRepositoryInterface
             'user_id' => auth()->id(),
             'trip_name' => $data['trip_name'],
             'trip_description' => $data['trip_description'],
+            'trip_type' => $data['trip_type'],
             'trip_price' => $data['trip_price'],
             'start_date' => $data['start_date'],
             'end_date' => $data['end_date'],
