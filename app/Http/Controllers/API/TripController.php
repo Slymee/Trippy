@@ -8,8 +8,6 @@ use App\Models\Trip;
 use App\Repositories\Interfaces\TripRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Spatie\FlareClient\Api;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 // use Spatie\FlareClient\Api;
 
