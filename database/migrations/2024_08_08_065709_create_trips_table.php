@@ -20,8 +20,9 @@ return new class extends Migration
             $table->text('trip_description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('arrival_time');
+            $table->integer('number_of_days');
             $table->decimal('trip_price', 10, 2);
+            $table->string('total_people', 255);
             $table->string('means_of_transport', 255);
             $table->boolean('is_private')->default(0);
             $table->timestamps();

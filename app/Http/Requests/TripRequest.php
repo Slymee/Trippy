@@ -30,6 +30,7 @@ class TripRequest extends FormRequest
             'start_date' => ['required', 'date_format:Y-m-d'],
             'end_date' => ['required', 'date_format:Y-m-d'],
             'arrival_time' => ['required', 'string', 'max:255'],
+            'total_people' => ['required', 'string'],
             'means_of_transport' => ['required', 'string', 'max:255'],
             'is_private' => ['sometimes', 'boolean'],
 

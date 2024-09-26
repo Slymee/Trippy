@@ -52,7 +52,8 @@ class TripRepository implements TripRepositoryInterface
             'trip_price' => $data['trip_price'],
             'start_date' => $data['start_date'],
             'end_date' => $data['end_date'],
-            'arrival_time' => $data['arrival_time'],
+            'number_of_days' => floor((abs(strtotime($data['end_date']) - strtotime($data['start_date']))) / (60*60*24)),
+            'total_people' => $data['total_people'],
             'means_of_transport' => $data['means_of_transport'],
             'is_private' => $data['is_private'],
         ]);
