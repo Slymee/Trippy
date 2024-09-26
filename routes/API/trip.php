@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\RecommendationController;
 use App\Http\Controllers\API\TripController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,6 @@ Route::middleware('auth:sanctum')->prefix('trip')->name('trip.')->group(function
     Route::post('/{tripId}/trip-eroll', [TripController::class, 'enrollUserInTrip'])->name('trip.enrollment');
 
     Route::post('/{tripId}/trip-leave', [TripController::class, 'leaveUserInTrip']);
+    
+    Route::get('/recommendation/{tripId}', [RecommendationController::class, 'index'])->name('trip.recommendation.service');
 });
