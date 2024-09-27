@@ -15,9 +15,9 @@ Route::middleware('auth:sanctum')->prefix('trip')->name('trip.')->group(function
 
     Route::get('/details/{tripId}', [TripController::class, 'show'])->name('details');
 
-    Route::post('/{tripId}/trip-eroll', [TripController::class, 'enrollUserInTrip'])->name('trip.enrollment');
+    Route::post('/{tripId}/trip-enroll', [TripController::class, 'enrollUserInTrip'])->name('trip.enrollment');
 
     Route::post('/{tripId}/trip-leave', [TripController::class, 'leaveUserInTrip']);
-    
+
     Route::get('/recommendation/{tripId}', [RecommendationController::class, 'index'])->name('trip.recommendation.service');
 });
