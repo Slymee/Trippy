@@ -39,7 +39,7 @@ class TripRepository implements TripRepositoryInterface
 
     public function getTripDetails($tripId)
     {
-        return Trip::with('users')->find($tripId);
+        return Trip::with('users')->find($tripId)->load('tripLocation', 'stopOvers');
     }
 
     public function createTrip(array $data)
@@ -89,6 +89,6 @@ class TripRepository implements TripRepositoryInterface
 
     public function leaveUserInTrip($userId, $tripId)
     {
-        return Trip::find($tripId)->users()->detatch($userId);
+        return Trip::find($tripId)->users()->detach($userId);
     }
 }
