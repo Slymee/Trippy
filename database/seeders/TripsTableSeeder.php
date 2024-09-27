@@ -424,6 +424,300 @@ class TripsTableSeeder extends Seeder
                 ]
             ],
 
+            [
+                'trip_name' => 'Rafting in Bhote Koshi',
+                'trip_description' => 'Experience thrilling white-water rafting in the Bhote Koshi river.',
+                'trip_type' => 'Adventure',
+                'trip_price' => 6000,
+                'start_date' => '2024-02-15',
+                'end_date' => '2024-02-16',
+                'number_of_days' => 2,
+                'arrival_time' => '9:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Bus',
+                'is_private' => false,
+                'start_loc' => '27.7892, 85.3247',
+                'start_loc_name' => 'Kathmandu',
+                'end_loc' => '27.7630, 85.4230',
+                'end_loc_name' => 'Bhote Koshi',
+                'location' => [
+                    '27.7624, 85.4112', // Bali
+                    '27.7000, 85.3000', // Dolakha
+                ]
+            ],
+            [
+                'trip_name' => 'Cycling Tour of Kathmandu Valley',
+                'trip_description' => 'Explore the Kathmandu Valley on a thrilling cycling tour.',
+                'trip_type' => 'Adventure',
+                'trip_price' => 4500,
+                'start_date' => '2024-02-20',
+                'end_date' => '2024-02-22',
+                'number_of_days' => 3,
+                'arrival_time' => '8:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Bike',
+                'is_private' => true,
+                'start_loc' => '27.7172, 85.3240',
+                'start_loc_name' => 'Kathmandu',
+                'end_loc' => '27.7025, 85.2911',
+                'end_loc_name' => 'Bhaktapur',
+                'location' => [
+                    '27.6599, 85.4290', // Nagarkot
+                    '27.6756, 85.4990', // Dhulikhel
+                ],
+            ],
+            [
+                'trip_name' => 'Wildlife Safari in Bardiya',
+                'trip_description' => 'Experience the rich wildlife of Bardiya National Park.',
+                'trip_type' => 'Wildlife Tour',
+                'trip_price' => 7000,
+                'start_date' => '2024-03-25',
+                'end_date' => '2024-03-30',
+                'number_of_days' => 5,
+                'arrival_time' => '11:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Bus',
+                'is_private' => true,
+                'start_loc' => '27.5943, 84.4153',
+                'start_loc_name' => 'Chitwan',
+                'end_loc' => '28.5560, 81.4874',
+                'end_loc_name' => 'Bardiya',
+                'location' => [
+                    '28.5883, 81.5770', // Thakurdwara
+                    '28.5111, 81.5722', // Bhurigaun
+                ]
+            ],
+            [
+                'trip_name' => 'Cultural Heritage Tour of Kathmandu',
+                'trip_description' => 'Explore the rich cultural heritage sites of Kathmandu Valley.',
+                'trip_type' => 'Cultural Tour',
+                'trip_price' => 5000,
+                'start_date' => '2024-04-05',
+                'end_date' => '2024-04-06',
+                'number_of_days' => 2,
+                'arrival_time' => '10:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Car',
+                'is_private' => false,
+                'start_loc' => '27.7172, 85.3240',
+                'start_loc_name' => 'Kathmandu',
+                'end_loc' => '27.7100, 85.2939',
+                'end_loc_name' => 'Patan',
+                'location' => [
+                    '27.7015, 85.3240', // Swayambhunath
+                    '27.6745, 85.3247', // Boudhanath
+                ]
+            ],
+            [
+                'trip_name' => 'Exploring the Annapurna Circuit',
+                'trip_description' => 'Embark on an adventurous trek around the Annapurna Circuit.',
+                'trip_type' => 'Trekking',
+                'trip_price' => 18000,
+                'start_date' => '2024-05-20',
+                'end_date' => '2024-06-03',
+                'number_of_days' => 15,
+                'arrival_time' => '7:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Foot',
+                'is_private' => true,
+                'start_loc' => '28.2093, 83.9866',
+                'start_loc_name' => 'Nayapul',
+                'end_loc' => '28.5672, 83.8937',
+                'end_loc_name' => 'Jomsom',
+                'location' => [
+                    '28.4263, 83.6754', // Tikhedhunga
+                    '28.4740, 83.8858', // Manang
+                ]
+            ],
+            [
+                'trip_name' => 'Hiking to Langtang Gosaikunda',
+                'trip_description' => 'Trek through Langtang Valley to the sacred Gosaikunda lakes.',
+                'trip_type' => 'Trekking',
+                'trip_price' => 9500,
+                'start_date' => '2024-07-10',
+                'end_date' => '2024-07-16',
+                'number_of_days' => 7,
+                'arrival_time' => '6:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Foot',
+                'is_private' => true,
+                'start_loc' => '28.2283, 85.6156',
+                'start_loc_name' => 'Syabrubesi',
+                'end_loc' => '28.2443, 85.4789',
+                'end_loc_name' => 'Gosaikunda',
+                'location' => [
+                    '28.2111, 85.5163', // Sing Gompa
+                    '28.2367, 85.4919', // Lauribina Yak
+                ]
+            ],
+            [
+                'trip_name' => 'Trekking to Poon Hill',
+                'trip_description' => 'A short trek to witness breathtaking sunrise views from Poon Hill.',
+                'trip_type' => 'Trekking',
+                'trip_price' => 7000,
+                'start_date' => '2024-08-15',
+                'end_date' => '2024-08-20',
+                'number_of_days' => 5,
+                'arrival_time' => '5:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Foot',
+                'is_private' => false,
+                'start_loc' => '28.2093, 83.9866',
+                'start_loc_name' => 'Nayapul',
+                'end_loc' => '28.4790, 83.6766',
+                'end_loc_name' => 'Ghorepani',
+                'location' => [
+                    '28.4318, 83.6843', // Ulleri
+                    '28.4792, 83.6845', // Poon Hill
+                ]
+            ],
+            [
+                'trip_name' => 'Cultural Tour of Bhaktapur',
+                'trip_description' => 'Explore the ancient city of Bhaktapur with its rich history and culture.',
+                'trip_type' => 'Cultural Tour',
+                'trip_price' => 4000,
+                'start_date' => '2024-09-05',
+                'end_date' => '2024-09-06',
+                'number_of_days' => 2,
+                'arrival_time' => '10:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Car',
+                'is_private' => false,
+                'start_loc' => '27.7172, 85.3240',
+                'start_loc_name' => 'Kathmandu',
+                'end_loc' => '27.6719, 85.4292',
+                'end_loc_name' => 'Bhaktapur',
+                'location' => [
+                    '27.6690, 85.5034', // Changunarayan
+                    '27.6762, 85.4339', // Bhadgaon
+                ]
+            ],
+            [
+                'trip_name' => 'Mountain Biking in Pokhara',
+                'trip_description' => 'Enjoy thrilling mountain biking through the hills around Pokhara.',
+                'trip_type' => 'Adventure',
+                'trip_price' => 5000,
+                'start_date' => '2024-09-20',
+                'end_date' => '2024-09-22',
+                'number_of_days' => 3,
+                'arrival_time' => '8:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Bike',
+                'is_private' => true,
+                'start_loc' => '28.2093, 83.9866',
+                'start_loc_name' => 'Pokhara',
+                'end_loc' => '28.2375, 83.9944',
+                'end_loc_name' => 'Sarangkot',
+                'location' => [
+                    '28.2333, 83.9494', // Lakeside
+                    '28.1963, 83.9644', // Pame
+                ]
+            ],
+            [
+                'trip_name' => 'Camping at Rara Lake',
+                'trip_description' => 'Experience the serene beauty of Rara Lake with an overnight camping trip.',
+                'trip_type' => 'Camping',
+                'trip_price' => 7500,
+                'start_date' => '2024-10-10',
+                'end_date' => '2024-10-12',
+                'number_of_days' => 3,
+                'arrival_time' => '9:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Foot',
+                'is_private' => true,
+                'start_loc' => '29.4013, 82.0938',
+                'start_loc_name' => 'Jumla',
+                'end_loc' => '29.5650, 82.0774',
+                'end_loc_name' => 'Rara Lake',
+                'location' => [
+                    '29.3961, 82.0980', // Cherechaur
+                    '29.4743, 82.0791', // Rara National Park
+                ]
+            ],
+            [
+                'trip_name' => 'Ghorepani Poon Hill Trek',
+                'trip_description' => 'A popular trek to see the stunning views of the Annapurna range.',
+                'trip_type' => 'Trekking',
+                'trip_price' => 6500,
+                'start_date' => '2024-10-15',
+                'end_date' => '2024-10-19',
+                'number_of_days' => 5,
+                'arrival_time' => '4:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Foot',
+                'is_private' => true,
+                'start_loc' => '28.2093, 83.9866',
+                'start_loc_name' => 'Nayapul',
+                'end_loc' => '28.4790, 83.6766',
+                'end_loc_name' => 'Ghorepani',
+                'location' => [
+                    '28.4318, 83.6843', // Ulleri
+                    '28.4792, 83.6845', // Poon Hill
+                ]
+            ],
+            [
+                'trip_name' => 'Scenic Drive to Bandipur',
+                'trip_description' => 'Enjoy a scenic drive to the hilltop town of Bandipur.',
+                'trip_type' => 'Road Trip',
+                'trip_price' => 5000,
+                'start_date' => '2024-11-10',
+                'end_date' => '2024-11-11',
+                'number_of_days' => 2,
+                'arrival_time' => '10:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Car',
+                'is_private' => true,
+                'start_loc' => '27.7172, 85.3240',
+                'start_loc_name' => 'Kathmandu',
+                'end_loc' => '28.2453, 84.1619',
+                'end_loc_name' => 'Bandipur',
+                'location' => [
+                    '28.3038, 84.3741', // Dumre
+                    '28.2000, 84.2000', // Damauli
+                ]
+            ],
+            [
+                'trip_name' => 'Photography Tour in Pokhara',
+                'trip_description' => 'Capture the beauty of Pokhara and its stunning landscapes.',
+                'trip_type' => 'Photography',
+                'trip_price' => 3000,
+                'start_date' => '2024-12-01',
+                'end_date' => '2024-12-03',
+                'number_of_days' => 3,
+                'arrival_time' => '7:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Car',
+                'is_private' => false,
+                'start_loc' => '28.2093, 83.9866',
+                'start_loc_name' => 'Pokhara',
+                'end_loc' => '28.2333, 83.8999',
+                'end_loc_name' => 'Sarangkot',
+                'location' => [
+                    '28.2014, 83.9845', // Fewa Lake
+                    '28.2038, 83.9494', // World Peace Pagoda
+                ]
+            ],
+            [
+                'trip_name' => 'Skiing in Gulmarg',
+                'trip_description' => 'Experience the thrill of skiing in the beautiful Gulmarg region.',
+                'trip_type' => 'Adventure',
+                'trip_price' => 15000,
+                'start_date' => '2024-12-15',
+                'end_date' => '2024-12-20',
+                'number_of_days' => 6,
+                'arrival_time' => '9:00 AM',
+                'total_people' => (string)rand(5, 10),
+                'means_of_transport' => 'Car',
+                'is_private' => true,
+                'start_loc' => '34.0085, 74.3710',
+                'start_loc_name' => 'Srinagar',
+                'end_loc' => '34.0200, 74.3687',
+                'end_loc_name' => 'Gulmarg',
+                'location' => [
+                    '34.0429, 74.3661', // Gulmarg Ski Resort
+                    '34.0492, 74.3740', // Khilanmarg
+                ]
+            ],
         ];
 
         foreach($trips as $trip){
