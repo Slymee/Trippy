@@ -168,7 +168,7 @@ class TripController extends Controller
     public function enrollUserInTrip($tripId, Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required|exists:users,id', // Validate that user_id exists in users table
+            'user_id' => 'required|exists:users,id',
         ]);
 
         try{
@@ -188,7 +188,7 @@ class TripController extends Controller
     public function leaveUserInTrip($tripId, Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required|exists:users,id', // Validate that user_id exists in users table
+            'user_id' => 'required|exists:users,id',
         ]);
 
         try{

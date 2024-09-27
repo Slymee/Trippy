@@ -18,7 +18,7 @@ class RecommendationService
     /**
      * Recommend trips similar to the given trip.
      *
-     * @param Trip $currentTrip
+     * @param Trip $currentTrip, int $k
      * @return Collection
      */
     public function recommend(Trip $currentTrip, int $k = 7): Collection
@@ -35,7 +35,7 @@ class RecommendationService
                 $trip->number_of_days,
                 $this->encodeTransportType($trip->means_of_transport),
                 $this->encodeTripType($trip->trip_type),
-                // $trip->trip_price, // Added price as a feature
+                $trip->trip_price,
             ];
             $labels[] = $trip->id;
         }
@@ -49,7 +49,7 @@ class RecommendationService
             $currentTrip->number_of_days,
             $this->encodeTransportType($currentTrip->means_of_transport),
             $this->encodeTripType($currentTrip->trip_type),
-            // $currentTrip->trip_price, // Include price as a feature
+            $currentTrip->trip_price,
         ];
 
         // Predict k nearest neighbors
@@ -78,7 +78,7 @@ class RecommendationService
             'Train' => 4
         ];
 
-        return $types[$transportType] ?? 0; // Default to 0 if the transport type is not recognized
+        return $types[$transportType] ?? 0;
     }
 
     /**
@@ -96,6 +96,6 @@ class RecommendationService
             'Cultural Tour' => 3,
         ];
 
-        return $types[$tripType] ?? 0; // Default to 0 if the trip type is not recognized
+        return $types[$tripType] ?? 0;
     }
 }
