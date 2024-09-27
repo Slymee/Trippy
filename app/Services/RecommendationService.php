@@ -21,7 +21,7 @@ class RecommendationService
      * @param Trip $currentTrip
      * @return Collection
      */
-    public function recommend(Trip $currentTrip, int $k = 5): Collection
+    public function recommend(Trip $currentTrip, int $k = 7): Collection
     {
         // Fetch all trips excluding current
         $trips = Trip::where('id', '!=', $currentTrip->id)->get();
