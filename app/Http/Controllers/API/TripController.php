@@ -172,9 +172,9 @@ class TripController extends Controller
         ]);
 
         try{
-            if($tripEnroll = $this->tripRepo->enrollUserInTrip($validatedData['user_id'], $tripId)            ){            
+            if($tripEnroll = $this->tripRepo->enrollUserInTrip($validatedData['user_id'], $tripId)            ){
 
-                return apiResponse($tripEnroll, 'Left the trip.', true, 200);
+                return apiResponse($tripEnroll, 'Enrolled in Trip.', true, 200);
             }
 
             return apiResponse(null, 'Not Enrolled', false, 404);
