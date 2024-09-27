@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Trip;
 use App\Services\RecommendationService;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 use function App\Helpers\apiResponse;
@@ -27,7 +27,7 @@ class RecommendationController extends Controller
             $recommendedTrips = $this->recommendationService->recommend($trip);
 
             if($recommendedTrips){
-                return apiResponse($recommendedTrips , 'Similar trips found.', true, 200);
+                return apiResponse($recommendedTrips , 'Recommended trips found.', true, 200);
             }
 
             return apiResponse(null, 'Similar Trips not found.', false, 404);

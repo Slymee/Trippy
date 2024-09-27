@@ -21,45 +21,46 @@ class RecommendationService
      * @param Trip $currentTrip
      * @return Collection
      */
-    public function recommend(Trip $currentTrip): Collection
+    public function recommend(Trip $currentTrip, int $k = 5): Collection
     {
-        //Fetch all trips excluding current
+        // Fetch all trips excluding current
         $trips = Trip::where('id', '!=', $currentTrip->id)->get();
 
-        //Prepare training data
-        $sample = [];
-        $lables = [];
+        // Prepare training data
+        $samples = [];
+        $labels = [];
 
         foreach ($trips as $trip) {
-            // Extract features from trips (one-hot encode categorical features)
             $samples[] = [
-                $trip->start_date->diffInDays($trip->end_date), // Duration
-                $this->encodeTransportType($trip->means_of_transport), // Transport mode (encoded)
-                $trip->arrival_time,  // Arrival time
-                $this->encodeTripType($trip->trip_type), // Trip type (encoded)
+                $trip->number_of_days,
+                $this->encodeTransportType($trip->means_of_transport),
+                $this->encodeTripType($trip->trip_type),
+                // $trip->trip_price, // Added price as a feature
             ];
-            $labels[] = $trip->id; 
+            $labels[] = $trip->id;
         }
 
-         // Train the KNN model
-         $this->model->train($samples, $labels);
+        // Train the KNN model with k neighbors
+        $this->model = new KNearestNeighbors($k);
+        $this->model->train($samples, $labels);
 
-         // Prepare the current trip features
-         $currentTripFeatures = [
-             $currentTrip->start_date->diffInDays($currentTrip->end_date), // Duration
-             $this->encodeTransportType($currentTrip->means_of_transport), // Transport mode
-             $currentTrip->arrival_time,  // Arrival time
-             $this->encodeTripType($currentTrip->trip_type), // Trip type (encoded)
-         ];
- 
-         // Predict similar trips
-         $recommendedIds = $this->model->predict([$currentTripFeatures]);
- 
-         // Fetch recommended trips from the database
-         $recommendedTrips = Trip::whereIn('id', $recommendedIds)->get();
- 
-         return $recommendedTrips;
+        // Prepare the current trip features
+        $currentTripFeatures = [
+            $currentTrip->number_of_days,
+            $this->encodeTransportType($currentTrip->means_of_transport),
+            $this->encodeTripType($currentTrip->trip_type),
+            // $currentTrip->trip_price, // Include price as a feature
+        ];
+
+        // Predict k nearest neighbors
+        $recommendedIds = $this->model->predict([$currentTripFeatures]);
+
+        // Fetch recommended trips from the database
+        $recommendedTrips = Trip::whereIn('id', $recommendedIds)->get();
+
+        return $recommendedTrips;
     }
+
 
     /**
      * Encode transport type into numerical values
