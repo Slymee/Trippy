@@ -20,8 +20,9 @@ class Trip extends Model
         'trip_price',
         'start_date',
         'end_date',
+        'number_of_days',
+        'total_people',
         'means_of_transport',
-        
     ];
 
     public function user()
