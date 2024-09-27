@@ -54,6 +54,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 5000,
                 'start_date' => '2024-03-01',
                 'end_date' => '2024-03-03',
+                'number_of_days' => 3,
                 'arrival_time' => '10:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Car',
@@ -76,6 +77,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 3000,
                 'start_date' => '2024-03-05',
                 'end_date' => '2024-03-07',
+                'number_of_days' => 3,
                 'arrival_time' => '12:00 PM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Bus',
@@ -98,6 +100,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 15000,
                 'start_date' => '2024-03-10',
                 'end_date' => '2024-03-20',
+                'number_of_days' => 10,
                 'arrival_time' => '5:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
@@ -121,6 +124,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 5000,
                 'start_date' => '2024-03-01',
                 'end_date' => '2024-03-03',
+                'number_of_days' => 3,
                 'arrival_time' => '10:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Car',
@@ -143,6 +147,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 3000,
                 'start_date' => '2024-03-05',
                 'end_date' => '2024-03-07',
+                'number_of_days' => 3,
                 'arrival_time' => '12:00 PM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Bus',
@@ -165,6 +170,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 15000,
                 'start_date' => '2024-03-10',
                 'end_date' => '2024-03-20',
+                'number_of_days' => 10,
                 'arrival_time' => '5:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
@@ -188,6 +194,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 8000,
                 'start_date' => '2024-04-01',
                 'end_date' => '2024-04-07',
+                'number_of_days' => 7,
                 'arrival_time' => '6:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
@@ -208,6 +215,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 10000,
                 'start_date' => '2024-04-10',
                 'end_date' => '2024-04-20',
+                'number_of_days' => 10,
                 'arrival_time' => '7:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
@@ -228,6 +236,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 12000,
                 'start_date' => '2024-05-05',
                 'end_date' => '2024-05-15',
+                'number_of_days' => 10,
                 'arrival_time' => '8:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
@@ -248,6 +257,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 14000,
                 'start_date' => '2024-06-01',
                 'end_date' => '2024-06-15',
+                'number_of_days' => 15,
                 'arrival_time' => '6:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
@@ -268,6 +278,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 6000,
                 'start_date' => '2024-07-01',
                 'end_date' => '2024-07-05',
+                'number_of_days' => 5,
                 'arrival_time' => '5:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
@@ -288,6 +299,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 12000,
                 'start_date' => '2024-08-01',
                 'end_date' => '2024-08-10',
+                'number_of_days' => 10,
                 'arrival_time' => '9:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Car',
@@ -309,6 +321,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 15000,
                 'start_date' => '2024-09-01',
                 'end_date' => '2024-09-12',
+                'number_of_days' => 12,
                 'arrival_time' => '8:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => '4WD',
@@ -323,7 +336,7 @@ class TripsTableSeeder extends Seeder
                     '28.7833, 83.5833', // Muktinath
                 ]
             ],
-            
+
             [
                 'trip_name' => 'Road Trip to Langtang Valley',
                 'trip_description' => 'Discover the serene beauty of Langtang Valley on a relaxing road trip.',
@@ -331,6 +344,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 9000,
                 'start_date' => '2024-10-01',
                 'end_date' => '2024-10-05',
+                'number_of_days' => 5,
                 'arrival_time' => '7:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Car',
@@ -351,6 +365,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 3000,
                 'start_date' => '2024-11-01',
                 'end_date' => '2024-11-02',
+                'number_of_days' => 1,
                 'arrival_time' => '6:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
@@ -364,7 +379,7 @@ class TripsTableSeeder extends Seeder
                     '27.7017, 85.4535', // Changu Narayan
                 ]
             ],
-            
+
             [
                 'trip_name' => 'Hiking to Shivapuri Peak',
                 'trip_description' => 'A refreshing hike through Shivapuri National Park to the peak.',
@@ -372,6 +387,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 2500,
                 'start_date' => '2024-12-01',
                 'end_date' => '2024-12-01',
+                'number_of_days' => 1,
                 'arrival_time' => '5:30 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
@@ -385,7 +401,7 @@ class TripsTableSeeder extends Seeder
                     '27.8333, 85.4000', // Baghdwar
                 ]
             ],
-            
+
             [
                 'trip_name' => 'Hiking to Dhulikhel',
                 'trip_description' => 'Hike to Dhulikhel for stunning panoramic views and cultural experiences.',
@@ -393,6 +409,7 @@ class TripsTableSeeder extends Seeder
                 'trip_price' => 3500,
                 'start_date' => '2025-01-15',
                 'end_date' => '2025-01-16',
+                'number_of_days' => 2,
                 'arrival_time' => '6:00 AM',
                 'total_people' => (string)rand(5, 10),
                 'means_of_transport' => 'Foot',
