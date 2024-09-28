@@ -7,6 +7,7 @@ use App\Models\Trip;
 use App\Models\TripEnrollment;
 use App\Models\TripLocation;
 use App\Repositories\Interfaces\TripRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class TripRepository implements TripRepositoryInterface
 {
@@ -26,16 +27,21 @@ class TripRepository implements TripRepositoryInterface
     {
         $query = Trip::where('is_private', false);
 
-        if ($paginate === 'all') {
-            return $query->get();
-        }
+        // Fetch the trips
+        $trips = $paginate === 'all' ? $query->get() : $query->paginate(is_numeric($paginate) && (int)$paginate > 0 ? (int)$paginate : 5);
 
-        if (is_numeric($paginate) && (int)$paginate > 0) {
-            return $query->paginate((int)$paginate);
-        }
+        // Get the currently authenticated user
+        $user = Auth::user();
 
-        return $query->paginate(5);
+        // Attach enrollment status to each trip
+        $trips->transform(function ($trip) use ($user) {
+            $trip->is_enrolled = $user ? $trip->users()->where('users.id', $user->id)->exists() : false;
+            return $trip;
+        });
+
+        return $trips;
     }
+
 
     public function getTripDetails($tripId)
     {
