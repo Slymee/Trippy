@@ -68,7 +68,7 @@ class TripController extends Controller
             if($trip = $this->tripRepo->getTripDetails($tripId)){;
                 $response = [
                     'trip' => $trip,
-                    'isEnrolled' => $trip->isUserEnrolled(),
+                    'is_enrolled' => $trip->isUserEnrolled(),
                 ];
                 return apiResponse($response, 'Instance Found.', true, 200);
             }
