@@ -23,6 +23,7 @@ class Trip extends Model
         'number_of_days',
         'total_people',
         'means_of_transport',
+        'is_private',
     ];
 
     public function user()
@@ -57,7 +58,7 @@ class Trip extends Model
     {
         // Get the currently authenticated user
         $user = Auth::user();
-    
+
         // Check if the user is enrolled in this trip
         return $user ? $this->users()->where('users.id', $user->id)->exists() : false;
     }
