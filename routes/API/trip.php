@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\InviteController;
 use App\Http\Controllers\API\RecommendationController;
 use App\Http\Controllers\API\TripController;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,10 @@ Route::middleware('auth:sanctum')->prefix('trip')->name('trip.')->group(function
     Route::post('/{tripId}/trip-leave', [TripController::class, 'leaveUserInTrip']);
 
     Route::get('/recommendation/{tripId}', [RecommendationController::class, 'index'])->name('trip.recommendation.service');
+
+    Route::prefix('invite')->name('invite.')->group(function () {
+        Route::post('/send-invite/{tripId}')->name('send-invite');
+        Route::get('/all-invites', [InviteController::class, 'getAllInvites'])->name('all');
+        Route::get('/{tripId}/{action}', [InviteController::class, 'inviteAcceptReject'])->name('accept-reject');
+    });
 });

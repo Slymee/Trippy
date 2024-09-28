@@ -203,4 +203,13 @@ class TripController extends Controller
             return apiResponse(null, $e->getMessage(), false, 500);
         }
     }
+
+    public function inviteToTrip(Request $request, $tripId)
+    {
+        $validated = $request->validate([
+            'user_id' => ['required', 'array', 'exists:users,id']
+        ]);
+
+        $tripInvite = $this->tripRepo->inviteToTrip($validated['user_id'], $tripId);
+    }
 }

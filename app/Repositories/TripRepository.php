@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\StopOver;
 use App\Models\Trip;
 use App\Models\TripEnrollment;
+use App\Models\TripInvite;
 use App\Models\TripLocation;
 use App\Repositories\Interfaces\TripRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
@@ -107,5 +108,60 @@ class TripRepository implements TripRepositoryInterface
         return $tripEnrollment
             ? $tripEnrollment
             : false;
+    }
+
+    public function inviteToTrip(array $receiverIds, $tripId)
+    {
+        foreach ($receiverIds as $receiverId) {
+            // Check if the invitation already exists
+            $existingInvite = TripInvite::where([
+                'trip_id' => $tripId,
+                'invited_to' => $receiverId,
+            ])->first();
+
+            // If it doesn't exist, create a new invitation
+            if (!$existingInvite) {
+                TripInvite::create([
+                    'invited_by' => auth()->id(), // Assuming the inviter is the currently authenticated user
+                    'invited_to' => $receiverId,
+                    'trip_id' => $tripId,
+                    'status' => 'pending',
+                ]);
+            }
+        }
+
+        return count($receiverIds); // Return the count of attempts
+    }
+
+    public function getAllInvites()
+    {
+        return TripInvite::where([
+            'invited_to', auth()->id(),
+            'status' => 'pending',
+        ])->get();
+    }
+
+    public function inviteAction(string $action, $tripId)
+    {
+        $tripInvite = TripInvite::where([
+            'trip_id' => $tripId,
+            'invited_to' => auth()->id(),
+        ])->first();
+
+        if($tripInvite){
+            if(strtolower($action) == 'accept'){
+                return $tripInvite->update([
+                    'status' => 'accept',
+                ]);
+            }
+
+            elseif(strtolower($action) == 'reject'){
+                return $tripInvite->update([
+                    'status' => 'reject',
+                ]);
+            }
+
+            return false;
+        }
     }
 }

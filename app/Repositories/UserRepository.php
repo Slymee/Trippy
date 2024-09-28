@@ -24,6 +24,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function searchUsername(string $searchTerm)
     {
-
+        return User::where('username', 'ILIKE', "%{$searchTerm}%")
+                    ->pluck('username', 'id');
     }
 }
