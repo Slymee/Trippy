@@ -95,6 +95,17 @@ class TripRepository implements TripRepositoryInterface
 
     public function leaveUserInTrip($userId, $tripId)
     {
-        return Trip::find($tripId)->users()->detach($userId);
+        $trip = Trip::find($tripId);
+        if(!$trip){
+            return false;
+        }
+
+        $tripEnrollment =TripEnrollment::where('trip_id', $tripId)
+                                    ->where('user_id', $userId)
+                                    ->delete();
+
+        return $tripEnrollment
+            ? $tripEnrollment
+            : false;
     }
 }
