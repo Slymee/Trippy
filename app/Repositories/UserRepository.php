@@ -21,4 +21,9 @@ class UserRepository implements UserRepositoryInterface
 
         return $user->update($data);
     }
+
+    public function searchUsername(string $searchTerm)
+    {
+
+    }
 }
