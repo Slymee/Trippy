@@ -150,9 +150,14 @@ class TripRepository implements TripRepositoryInterface
 
         if($tripInvite){
             if(strtolower($action) == 'accept'){
-                return $tripInvite->update([
-                    'status' => 'accept',
+                $tripEnroll = TripEnrollment::create([
+                    'user_id' => auth()->id(),
+                    'trip_id' => $tripId,
                 ]);
+
+                return [$tripInvite->update([
+                    'status' => 'accept',
+                ]), $tripEnroll];
             }
 
             elseif(strtolower($action) == 'reject'){

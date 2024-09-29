@@ -57,6 +57,7 @@ class InviteController extends Controller
     {
         try{
             $inviteAction = $this->tripRepo->inviteAction($action, $tripId);
+            return apiResponse($inviteAction, 'Accepted Invite and Enrolled into Trip,', true, 200);
         }catch (\Exception $e){
             Log::error('Caught Exception: '. $e->getMessage());
             Log::error('Exception Details: '. $e);
