@@ -10,5 +10,5 @@ Route::post('/login', [UserAuthController::class, 'login'])->name('login');
 
 Route::middleware('auth:sanctum')->prefix('profile')->name('profile.')->group(function () {
     Route::get('/{userId}', [UserController::class, 'index'])->name('index');
-    Route::put('/{userId}/update', [UserController::class, 'update'])->name('update');
+    Route::patch('/{userId}/update', [UserController::class, 'update'])->name('update');
 });
