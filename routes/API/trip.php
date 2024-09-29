@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->prefix('trip')->name('trip.')->group(function
     Route::get('/recommendation/{tripId}', [RecommendationController::class, 'index'])->name('trip.recommendation.service');
 
     Route::prefix('invite')->name('invite.')->group(function () {
-        Route::post('/send-invite/{tripId}')->name('send-invite');
+        Route::post('/send-invite/{tripId}', [InviteController::class, 'inviteToTrip'])->name('send-invite');
         Route::get('/all-invites', [InviteController::class, 'getAllInvites'])->name('all');
         Route::get('/{tripId}/{action}', [InviteController::class, 'inviteAcceptReject'])->name('accept-reject');
     });
